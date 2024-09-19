@@ -1,0 +1,91 @@
+import java.util.Scanner;
+
+public class Lab_2
+{
+    public static void main(){
+    Scanner input = new Scanner(System.in);
+    for (int op = -1 ; op != 0;){
+    
+    System.out.println("******************************************************");
+    System.out.println("\t\t Array Operations");
+    System.out.println("\t\t       Menu \n");
+    System.out.println("     [1] Create Array");
+    System.out.println("     [2] Insert Elements ");
+    System.out.println("     [3] Search ");
+    System.out.println("     [4] Display ");
+    System.out.println("     [5] Delete ");
+    System.out.println("     [0] Stop \n ");
+    System.out.println("  Enter a Choice: ");
+    op = input.nextInt();
+    System.out.print("\u000c");
+    
+    switch (op){
+    case 1:
+         System.out.print("\u000c");
+         create_Array(input);
+         break;
+    case 2:
+         System.out.print("\u000c");
+         insert_Array(input);
+         break;
+    case 3:
+         
+    
+    
+    
+    }
+    }
+    
+    
+    
+    
+    
+    
+    
+    }
+    
+    public static void create_Array(Scanner input){
+    
+    
+    
+    
+    
+    }
+     public static void insert_Array(Scanner input){
+    
+    
+    
+    
+    
+    }
+     public static void Search(Scanner input){
+    
+    
+    
+    
+    
+    }
+     public static void Display(Scanner input){
+    
+    
+    
+    
+    
+    }
+     public static void Delete(Scanner input){
+    
+    
+    
+    
+    
+    }
+    public static void Stop(Scanner input){
+    
+    
+  
+    
+    
+    
+    
+    }
+}
