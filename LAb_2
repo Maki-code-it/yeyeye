@@ -2,73 +2,137 @@ import java.util.Scanner;
 
 public class Lab_2
 {
+    private static int[] arrays = null;
+    private static int Arsize =0;
     public static void main(){
-    Scanner input = new Scanner(System.in);
-    for (int op = -1 ; op != 0;){
-    
-    System.out.println("******************************************************");
-    System.out.println("\t\t Array Operations");
-    System.out.println("\t\t       Menu \n");
-    System.out.println("     [1] Create Array");
-    System.out.println("     [2] Insert Elements ");
-    System.out.println("     [3] Search ");
-    System.out.println("     [4] Display ");
-    System.out.println("     [5] Delete ");
-    System.out.println("     [0] Stop \n ");
-    System.out.println("  Enter a Choice: ");
-    op = input.nextInt();
-    System.out.print("\u000c");
-    
-    switch (op){
-    case 1:
-         System.out.print("\u000c");
-         create_Array(input);
-         break;
-    case 2:
-         System.out.print("\u000c");
-         insert_Array(input);
-         break;
-    case 3:
-         
-    
-    
+        Scanner input = new Scanner(System.in);
+        int op;
+        do {
+        op  = defaultdisplay(input);
+        switch (op){
+        case 1:
+             System.out.print("\u000c");
+             create_Array(input);
+             break;
+        case 2:
+            if (arrays != null){
+                 System.out.print("\u000c");
+                 insert_Array(input);
+            }else {
+                System.out.print("\u000c");
+                System.out.println("ERROR: Create an array first");
+                op  = defaultdisplay(input);
+            }
+             break;
+        case 3:
+            if (arrays != null){
+                System.out.print("\u000c");
+                Display(input);
+             }else {
+                System.out.print("\u000c");
+                System.out.println("ERROR: Create an array first");
+                op  = defaultdisplay(input);
+            }
+            break;
+        case 4: 
+            if (arrays != null){
+                System.out.print("\u000c");
+                Search(input);
+              }else {
+                System.out.print("\u000c");
+                System.out.println("ERROR: Create an array first");
+                op  = defaultdisplay(input);
+            }
+            break;
+        case 5:
+                if (arrays != null){
+                System.out.print("\u000c");
+                Delete(input);
+              }else {
+                System.out.print("\u000c");
+                System.out.println("ERROR: Create an array first");
+                op  = defaultdisplay(input);
+            }
+            break;
+        case 0:   
+            System.out.print("\u000c");
+            Stop(input);
+            break;
+        default:
+            System.out.println("ERROR: Invalid Choices");
+           
+        }
+        }while(op != 0);
     
     }
-    }
-    
-    
-    
-    
-    
-    
-    
+    public static int defaultdisplay(Scanner input){
+        int res;
+        System.out.println("******************************************************");
+        System.out.println("\t\t Array Operations");
+        System.out.println("\t\t       Menu ");
+        System.out.println("******************************************************");
+        System.out.println("     [1] Create Array");
+        System.out.println("     [2] Insert Elements ");
+        System.out.println("     [3] Search ");
+        System.out.println("     [4] Display ");
+        System.out.println("     [5] Delete ");
+        System.out.println("     [0] Stop \n ");
+        System.out.println("  Enter a Choice: ");
+        res = input.nextInt();
+        System.out.print("\u000c");
+        if (arrays == null){
+        System.out.println("ERROR: Create an array first");}
+        return res;
     }
     
     public static void create_Array(Scanner input){
+    int ca;
+    System.out.print("\u000c");
+    System.out.println("******************************************************");
+    System.out.println("\t\t Create Array");
+    System.out.println("******************************************************");
     
+    System.out.println("Enter the size of the array minimum is 5 and max is 20: ");
+    System.out.print("Array Size: ");
+    ca = input.nextInt();
     
+    do{
+    if (ca <5 || ca >20 ){
     
-    
+    System.out.println("Please enter a minimum of 5 to 20 size of an array ");
+    System.out.print("Array Size: ");
+    ca = input.nextInt();
+    }
+    } while(ca <5 || ca >20);
+
+    arrays = new int [ca];
+    System.out.println("Array has been created with the size of: " + ca );
+    System.out.print("Enter any number to contnue...");
+    int con = input.nextInt();
+    System.out.print("\u000c");
+    main();
     
     }
      public static void insert_Array(Scanner input){
     
-    
+    System.out.println("******************************************************");
+    System.out.println("\t\t Insert Array");
+    System.out.println("******************************************************");
     
     
     
     }
      public static void Search(Scanner input){
     
-    
+    System.out.println("******************************************************");
+    System.out.println("\t\t Search an Element");
+    System.out.println("******************************************************");
     
     
     
     }
      public static void Display(Scanner input){
-    
-    
-    
+  
     
     
     }
@@ -83,7 +147,7 @@ public class Lab_2
     
     
   
-    
+    System.exit(0);
     
     
     
