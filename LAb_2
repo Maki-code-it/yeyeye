@@ -214,25 +214,19 @@ public class Lab_2
         System.out.print("Enter element to delete: ");
         int deleter = input.nextInt();
         int j;
-       for ( j=0; j<currentarsize; j++)
+       for ( j = 0; j < Arsize; j++)
             if (arrays [j] == deleter)
             break;
-        for (int k=j; k<currentarsize; k++)
+       for (int k = j; k < Arsize; k++)
             arrays[k] = arrays[k+1];
-            currentarsize--;
-            for (j=0; j<currentarsize; j++)
-                System.out.print(arrays[j] + " ");
-                System.out.println("");
-    
+       Arsize--;
+       for (j=0; j < Arsize; j++)
+            System.out.print(arrays[j] + " ");
+            System.out.println("");
             
-    }
+    }      
+    
     public static void Stop(Scanner input){
-    
-    
-  
-    System.exit(0);
-    
-    
-    
+        System.exit(0);
     }
 }
