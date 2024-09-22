@@ -171,12 +171,19 @@ public class Lab_2
         elementsearch = input.nextInt();
         for (i = 0; i < Arsize; i++)
         if (arrays[i] == elementsearch)
-        break;
-        if (i == Arsize)
+        
+        if (i == Arsize){
         System.out.println ("Can't find " + elementsearch);
-        else
+        System.out.print("Enter any number to contnue...");
+        int con1 = input.nextInt();
+        System.out.print("\u000c");
+        }
+        else{
         System.out.println ("Found " + elementsearch);
-    
+        System.out.print("Enter any number to contnue...");
+        int con2 = input.nextInt();
+        System.out.print("\u000c");
+        }
     }
      public static void Display(Scanner input){
         System.out.println("******************************************************");
@@ -184,7 +191,7 @@ public class Lab_2
         System.out.println("******************************************************");
          for (int i = 0; i < Arsize; i++) {  
             System.out.print(arrays[i] + "\t");
-        
+           
             if ((i + 1) % 5 == 0) {  
                 System.out.println(); 
             }  
@@ -193,15 +200,31 @@ public class Lab_2
         if (Arsize % 5 != 0) {  
             System.out.println();
         }  
+        System.out.print("Enter any number to contnue...");
+        int con = input.nextInt();
+        System.out.print("\u000c");
     }  
     
     
      public static void Delete(Scanner input){
+        System.out.println("******************************************************");
+        System.out.println("\t\t Element Deletion: ");
+        System.out.println("******************************************************");
     
+        System.out.print("Enter element to delete: ");
+        int deleter = input.nextInt();
+        int j;
+       for ( j=0; j<currentarsize; j++)
+            if (arrays [j] == deleter)
+            break;
+        for (int k=j; k<currentarsize; k++)
+            arrays[k] = arrays[k+1];
+            currentarsize--;
+            for (j=0; j<currentarsize; j++)
+                System.out.print(arrays[j] + " ");
+                System.out.println("");
     
-    
-    
-    
+            
     }
     public static void Stop(Scanner input){
     
