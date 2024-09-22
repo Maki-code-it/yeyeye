@@ -1,9 +1,10 @@
 import java.util.Scanner;
-
 public class Lab_2
 {
     private static int[] arrays = null;
     private static int Arsize =0;
+    private static int currentarsize = 0;
+    
     public static void main(){
         Scanner input = new Scanner(System.in);
         int op;
@@ -11,8 +12,13 @@ public class Lab_2
         op  = defaultdisplay(input);
         switch (op){
         case 1:
+             if (arrays == null){
              System.out.print("\u000c");
              create_Array(input);
+            }else{
+              System.out.println("ERROR: Already Created an array");
+            
+            }
              break;
         case 2:
             if (arrays != null){
@@ -27,7 +33,7 @@ public class Lab_2
         case 3:
             if (arrays != null){
                 System.out.print("\u000c");
-                Display(input);
+                Search(input);
              }else {
                 System.out.print("\u000c");
                 System.out.println("ERROR: Create an array first");
@@ -37,7 +43,7 @@ public class Lab_2
         case 4: 
             if (arrays != null){
                 System.out.print("\u000c");
-                Search(input);
+                Display(input);
               }else {
                 System.out.print("\u000c");
                 System.out.println("ERROR: Create an array first");
@@ -80,62 +86,116 @@ public class Lab_2
         System.out.println("  Enter a Choice: ");
         res = input.nextInt();
         System.out.print("\u000c");
-        if (arrays == null){
-        System.out.println("ERROR: Create an array first");}
+         if (arrays == null){
+        System.out.println("ERROR: Create an array first");
+        }
         return res;
     }
     
     public static void create_Array(Scanner input){
-    int ca;
-    System.out.print("\u000c");
-    System.out.println("******************************************************");
-    System.out.println("\t\t Create Array");
-    System.out.println("******************************************************");
+        int ca;
+        System.out.print("\u000c");
+        System.out.println("******************************************************");
+        System.out.println("\t\t Create Array");
+        System.out.println("******************************************************");
     
-    System.out.println("Enter the size of the array minimum is 5 and max is 20: ");
-    System.out.print("Array Size: ");
-    ca = input.nextInt();
+        System.out.println("Enter the size of the array minimum is 5 and max is 20: ");
+        System.out.print("Array Size: ");
+        ca = input.nextInt();
     
-    do{
-    if (ca <5 || ca >20 ){
+        do{
+            if (ca <5 || ca >20 ){
     
-    System.out.println("Please enter a minimum of 5 to 20 size of an array ");
-    System.out.print("Array Size: ");
-    ca = input.nextInt();
-    }
-    } while(ca <5 || ca >20);
+                System.out.println("Please enter a minimum of 5 to 20 size of an array ");
+                System.out.print("Array Size: ");
+                ca = input.nextInt();
+                }
+            } while(ca <5 || ca >20);
 
-    arrays = new int [ca];
-    System.out.println("Array has been created with the size of: " + ca );
-    System.out.print("Enter any number to contnue...");
-    int con = input.nextInt();
-    System.out.print("\u000c");
-    main();
+        arrays = new int [ca];
+        Arsize = ca;
+        System.out.println("Array has been created with the size of: " + ca );
+        System.out.print("Enter any number to contnue...");
+        int con = input.nextInt();
+        System.out.print("\u000c");
+        main();
     
     }
      public static void insert_Array(Scanner input){
-    
-    System.out.println("******************************************************");
-    System.out.println("\t\t Insert Array");
-    System.out.println("******************************************************");
-    
+        System.out.println("******************************************************");
+        System.out.println("\t\t Insert Array");
+        System.out.println("******************************************************");
+         System.out.println("Enter integers to insert into the array (enter -99 to stop):");
+
+        while (currentarsize < Arsize) {
+            int element = input.nextInt();
+            if (element == -99) {
+                System.out.print("\u000c");
+                break;
+            }
+
+            // Check for duplication in the arrays
+            boolean duplicate = false;
+            for (int i = 0; i < currentarsize; i++) {
+                if (arrays[i] == element) {
+                    duplicate = true;
+                    break;
+                }
+            }
+
+            if (!duplicate) {
+                arrays[currentarsize++] = element;
+                System.out.println("Added: " + element);
+            } else {
+                System.out.println("Duplicate element: " + element);
+            }
+
+            if (currentarsize == Arsize) {
+                System.out.println("Array is now full");
+                System.out.print("Enter any number to contnue...");
+                int con = input.nextInt();
+                System.out.print("\u000c");
+                
+                break;
+            }
+        }
     
     
     }
      public static void Search(Scanner input){
-    
-    System.out.println("******************************************************");
-    System.out.println("\t\t Search an Element");
-    System.out.println("******************************************************");
-    
-    
+        System.out.println("******************************************************");
+        System.out.println("\t\t Search an Element");
+        System.out.println("******************************************************");
+        int i;
+        int elementsearch;
+        elementsearch = input.nextInt();
+        for (i = 0; i < Arsize; i++)
+        if (arrays[i] == elementsearch)
+        break;
+        if (i == Arsize)
+        System.out.println ("Can't find " + elementsearch);
+        else
+        System.out.println ("Found " + elementsearch);
     
     }
      public static void Display(Scanner input){
-  
+        System.out.println("******************************************************");
+        System.out.println("\t\t The Array Contains: ");
+        System.out.println("******************************************************");
+         for (int i = 0; i < Arsize; i++) {  
+            System.out.print(arrays[i] + "\t");
+        
+            if ((i + 1) % 5 == 0) {  
+                System.out.println(); 
+            }  
+        }  
+       
+        if (Arsize % 5 != 0) {  
+            System.out.println();
+        }  
+    }  
     
     
-    }
      public static void Delete(Scanner input){
     
     
